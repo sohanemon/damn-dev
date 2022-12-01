@@ -1,15 +1,23 @@
 "use client";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Hero from "./hero";
+import Partners from "./partners";
 
 const Page = () => {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#FBD062",
+        main: "#111430",
+        sub: "#FBD062",
       },
     },
   });
-  return <ThemeProvider theme={theme}></ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <Hero />
+      <Partners />
+    </ThemeProvider>
+  );
 };
 
 export default Page;

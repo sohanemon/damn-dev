@@ -14,6 +14,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Image from "next/image";
+import { Container } from "@mui/system";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -48,58 +50,83 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar
-        component='nav'
-        sx={{ backgroundColor: "transparent", color: "#474747" }}
-      >
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant='h6'
-            component='div'
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            DamnDev
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#474747", fontSize: "14px" }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component='nav'>
-        <Drawer
-          container={container}
-          variant='temporary'
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+    <Container
+      sx={{ display: "relative", height: "100px", backgroundColor: "#FBD062" }}
+    >
+      <Box sx={{ display: "flex" }}>
+        <AppBar
+          component='nav'
           sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
+            backgroundColor: "transparent",
+            color: "#474747",
+            boxShadow: "none",
           }}
         >
-          {drawer}
-        </Drawer>
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              edge='start'
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant='h6'
+              component='div'
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              <div
+                style={{ display: "flex", gap: "4px", alignItems: "center" }}
+              >
+                <Image
+                  objectFit='cover'
+                  src='https://img.icons8.com/color/512/developer--v1.png'
+                  width='50'
+                  height='50'
+                  alt=''
+                />
+                DamnDev
+              </div>
+            </Typography>
+            <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              {navItems.map((item) => (
+                <Button
+                  key={item}
+                  sx={{ color: "#474747", fontSize: "14px", lineHeight: "9px" }}
+                >
+                  {item}
+                </Button>
+              ))}
+            </Box>
+            <Button variant='outlined' sx={{ color: "steelblue" }}>
+              Hire us
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Box component='nav'>
+          <Drawer
+            container={container}
+            variant='temporary'
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }
 
