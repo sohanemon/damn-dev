@@ -19,6 +19,7 @@ const SubHeading = styled(Typography)`
 const Hero = () => {
   return (
     <Container
+      maxWidth={"xl"}
       sx={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",

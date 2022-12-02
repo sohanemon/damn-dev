@@ -50,9 +50,7 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Container
-      sx={{ display: "relative", height: "100px", backgroundColor: "#FBD062" }}
-    >
+    <Container maxWidth={"xl"} sx={{ backgroundColor: "#FBD062" }}>
       <Box sx={{ display: "flex" }}>
         <AppBar
           component='nav'
@@ -60,6 +58,7 @@ function DrawerAppBar(props) {
             backgroundColor: "transparent",
             color: "#474747",
             boxShadow: "none",
+            position: "static",
           }}
         >
           <Toolbar>
